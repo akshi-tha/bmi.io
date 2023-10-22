@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <link rel="icon" href="bmi2.png" type="image/x-icon"/>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -71,6 +72,7 @@
     .c
         {
             color: cornflowerblue;
+            text-align: center;
         }
     .obese{ background-color: cornflowerblue;}
     .underweight {
@@ -88,6 +90,31 @@
     .obese {
       background-color: #ff9999;
     }
+      
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 400px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    th {
+      background-color: rgb(132, 156, 202);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
   </style>
 </head>
 <body>
@@ -97,13 +124,37 @@
     <p>BMI stands for Body Mass Index. It is a measure of body fat based on height and weight. BMI is used to assess whether a person has a healthy body weight.</p>
     <h2 class="c">Why is BMI important?</h2>
     <p>BMI is important because it can indicate whether a person is underweight, normal weight, overweight, or obese. It helps in assessing the risk of developing certain health conditions.</p>
+    <h2 class="c">BMI Chart</h2>
+  <table style="text-align: center;">
+    <tr>
+      <th>Weight Category</th>
+      <th>BMI Range</th>
+    </tr>
+    <tr>
+      <td>Underweight</td>
+      <td>&lt; 18.5</td>
+    </tr>
+    <tr>
+      <td>Normal Weight</td>
+      <td>18.5 - 24.9</td>
+    </tr>
+    <tr>
+      <td>Overweight</td>
+      <td>25 - 29.9</td>
+    </tr>
+    <tr>
+      <td>Obese</td>
+      <td>&gt; 30</td>
+    </tr>
+  </table>
+  <br>
     <h2 class="c">BMI Calculator</h2>
     <label class="c" for="weight">Weight:</label>
     <input type="number" id="weight" placeholder="Enter weight">
     <select id="weightUnit">
       <option value="kg">kg</option>
       <option value="lb">lb</option>
-    </select>
+    </select><br><br>
     <label  class="c" for="height">Height:</label>
     <input type="number" id="height" placeholder="Enter height">
     <select id="heightUnit">
