@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    
+    h1 {
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .c
+        {
+            color: cornflowerblue;
+        }
+    .obese{ background-color: cornflowerblue;}
+    .underweight {
+      background-color: #ffcccc;
+    }
+    
+    .normal {
+      background-color: #ccffcc;
+    }
+    
+    .overweight {
+      background-color: #ffffcc;
+    }
+    
+    .obese {
+      background-color: #ff9999;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="c">BMI Calculator</h1>
+  <div class="container">
+    <h2 class="c">What is BMI?</h2>
+    <p>BMI stands for Body Mass Index. It is a measure of body fat based on height and weight. BMI is used to assess whether a person has a healthy body weight.</p>
+    <h2 class="c">Why is BMI important?</h2>
+    <p>BMI is important because it can indicate whether a person is underweight, normal weight, overweight, or obese. It helps in assessing the risk of developing certain health conditions.</p>
+    <h2 class="c">BMI Calculator</h2>
+    <label class="c" for="weight">Weight:</label>
+    <input type="number" id="weight" placeholder="Enter weight">
+    <select id="weightUnit">
+      <option value="kg">kg</option>
+      <option value="lb">lb</option>
+    </select>
+    <label  class="c" for="height">Height:</label>
+    <input type="number" id="height" placeholder="Enter height">
+    <select id="heightUnit">
+      <option value="cm">cm</option>
+      <option value="in">in</option>
+    </select>
+    <button style="background-color: cornflowerblue;" onclick="calculateBMI()">Calculate BMI</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      var weight = document.getElementById("weight").value;
+      var weightUnit = document.getElementById("weightUnit").value;
+      var height = document.getElementById("height").value;
+      var heightUnit = document.getElementById("heightUnit").value;
+      var bmi = 0;
+      var result = document.getElementById("result");
+      
+      if (weight === "" || height === "") {
+        result.innerHTML = "Please enter valid values for weight and height.";
+        return;
+      }
+      
+      if (weightUnit === "lb") {
+        weight = weight * 0.453592; // convert pounds to kilograms
+      }
+      
+      if (heightUnit === "in") {
+        height = height * 2.54; // convert inches to centimeters
+      }
+      
+      bmi = weight / ((height / 100) * (height / 100));
+      
+      if (isNaN(bmi)) {
+        result.innerHTML = "Please enter valid values for weight and height.";
+      } else {
+        result.innerHTML = "Your BMI is " + bmi.toFixed(2) + ". ";
+        
+        if (bmi < 18.5) {
+          result.className = "result underweight";
+          result.innerHTML += "You are underweight.";
+        } else if (bmi >= 18.5 && bmi < 25) {
+          result.className = "result normal";
+          result.innerHTML += "You have a normal weight.";
+        } else if (bmi >= 25 && bmi < 30) {
+          result.className = "result overweight";
+          result.innerHTML += "You are overweight.";
+        } else {
+          result.className = "result obese";
+          result.innerHTML += "You are obese.";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
